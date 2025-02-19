@@ -1,0 +1,25 @@
+{
+  "name": "williamravel",
+  "version": "1.0.0",
+  "description": "Site internet williamravel",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willahh/williamravel-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/willahh/williamravel-site/issues"
+  },
+  "homepage": "https://github.com/willahh/williamravel-site#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
