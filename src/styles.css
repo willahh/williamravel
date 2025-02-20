@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background: blue; 
+  background: green; 
 }
 /* Vous pouvez ajouter des styles personnalisés ici si besoin */
 .gradient {

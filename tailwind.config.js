@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/v1/**/*.{html,njk}", // Inclut tous les fichiers HTML et Nunjucks dans src
-  ],
+export default {
+  content: ["./src/**/*.{html,njk,css}", "./src/_includes/**/*.{html,njk,css}"],
   theme: {
     extend: {
       fontFamily: {

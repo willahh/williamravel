@@ -1,18 +1,22 @@
-import { defineConfig } from "vite";
-import tailwindcss from "@tailwindcss/postcss";
-import autoprefixer from "autoprefixer";
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
-  root: "./src/v1", // Racine du projet
+  root: './src/v1',
   build: {
-    outDir: "../../dist", // Sortie dans ./dist
+    outDir: '../../dist',
     emptyOutDir: true,
-    assetsDir: "", // Pas de sous-dossier assets
+    assetsDir: '',
     rollupOptions: {
-      input: "./src/v1/styles.css", // Chemin explicite
+      input: './src/styles.css',
       output: {
-        assetFileNames: "styles.css", // Nom forcé
+        entryFileNames: 'styles.css',
+        assetFileNames: 'styles.css',
       },
+    },
+    watch: {
+      include: ['src/**/*.{css,html,njk}'], // Surveille les fichiers pertinents
     },
   },
   css: {
