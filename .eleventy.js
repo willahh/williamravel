@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import chokidar from 'chokidar';
+import fs from "fs";
+import path from "path";
+import chokidar from "chokidar";
 
 export default function (eleventyConfig) {
-  console.log('Eleventy config chargé !');
-  
+  console.log("Eleventy config chargé !");
+
   eleventyConfig.addPassthroughCopy("./src/images");
   eleventyConfig.addPassthroughCopy({ "./dist": "dist" }, { debug: true });
 
