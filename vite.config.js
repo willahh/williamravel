@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => ({
     emptyOutDir: true,
     assetsDir: '',
     rollupOptions: {
-      input: './src/styles.css',
+      input: './src/styles/styles.css',
       output: {
         assetFileNames: 'styles.css',
       },

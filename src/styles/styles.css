@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+/* @import './theme-01-blue-red.css'; */
+/* @import './theme-02-violet-blue.css'; */
+@import './theme-03-blue-yellow.css';
+
+:root {
+  font-size: 12.25px; /* Redéfinit 1rem = 12px */
+}
+body {
+  font-family: 'Fira Code', monospace;
+  /* font-size: 12px; */
+}
+
+.tooltip {
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
