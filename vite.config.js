@@ -1,27 +1,32 @@
-import { defineConfig } from "vite";
-import tailwindcss from "@tailwindcss/postcss";
-import autoprefixer from "autoprefixer";
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
-export default defineConfig({
-  root: "./src/v1",
+export default defineConfig(({ command }) => ({
+  root: './src/v1',
   build: {
-    outDir: "../../dist",
+    outDir: '../../dist',
     emptyOutDir: true,
-    assetsDir: "",
+    assetsDir: '',
     rollupOptions: {
-      input: "./src/styles.css",
+      input: './src/styles.css',
       output: {
-        // entryFileNames: "styles.css",
-        assetFileNames: "styles.css",
+        assetFileNames: 'styles.css',
       },
     },
-    watch: {
-      include: ["src/**/*.{css,html,njk}", "src/_includes/**/*.{css,html,njk}"],
-    },
+    ...(command === 'build' &&
+      process.argv.includes('--watch') && {
+        watch: {
+          include: [
+            'src/**/*.{css,html,njk}',
+            'src/_includes/**/*.{css,html,njk}',
+          ],
+        },
+      }),
   },
   css: {
     postcss: {
       plugins: [tailwindcss, autoprefixer],
     },
   },
-});
+}));

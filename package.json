@@ -7,6 +7,7 @@
   "scripts": {
     "cleanup:local": "rm -rf _site dist",
     "dev": "concurrently \"vite build --watch\" \"wait-on dist/styles.css && eleventy --serve\"",
+    "build:old": "NODE_ENV=production vite build && eleventy",
     "build": "NODE_ENV=production vite build && eleventy"
   },
   "repository": {
