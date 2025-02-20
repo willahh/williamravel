@@ -1,0 +1,9 @@
+{
+    "tailwindCSS.includeLanguages": {
+      "njk": "html",
+      "nunjucks": "html"
+    },
+    "tailwindCSS.files.exclude": [],
+    "tailwindCSS.rootFontSize": 16,
+    "tailwindCSS.emmetCompletions": true
+  }

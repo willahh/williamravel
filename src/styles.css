@@ -1,11 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/preflight";
 
 body {
-  background: green; 
+  border: 10px solid green;
 }
-/* Vous pouvez ajouter des styles personnalisés ici si besoin */
+
 .gradient {
   background: linear-gradient(90deg, #4a90e2 0%, #9013fe 100%);
 }

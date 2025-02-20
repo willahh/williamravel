@@ -5,14 +5,11 @@
   "description": "Site internet williamravel",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build:vite": "vite build",
-    "build:eleventy": "NODE_ENV=production eleventy",
-    "build": "npm run build:vite && npm run build:eleventy",
-    "build:netlify": "npm run build & npm run start",
-    "dev:vite": "vite build --watch",
-    "dev:watch": "vite build --watch",
-    "dev": "npm run dev:vite && npm run dev:watch & npm run start"
+    "cleanup:local": "rm -rf _site dist",
+    "serve": "eleventy --serve",
+    "build": "NODE_ENV=production concurrently \"vite build\" \"wait-on dist/styles.css && eleventy --serve\"",
+    "dev": "concurrently \"vite build --watch\" \"wait-on dist/styles.css && eleventy --serve\"",
+    "build:netlify": "npm run build && npm run serve"
   },
   "repository": {
     "type": "git",
@@ -22,8 +19,10 @@
     "@11ty/eleventy": "^3.0.0",
     "@tailwindcss/postcss": "^4.0.7",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.7",
-    "vite": "^6.1.1"
+    "vite": "^6.1.1",
+    "wait-on": "^8.0.2"
   }
 }
