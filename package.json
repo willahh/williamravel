@@ -6,10 +6,8 @@
   "main": "index.js",
   "scripts": {
     "cleanup:local": "rm -rf _site dist",
-    "serve": "eleventy --serve",
-    "build": "NODE_ENV=production concurrently \"vite build\" \"wait-on dist/styles.css && eleventy\"",
     "dev": "concurrently \"vite build --watch\" \"wait-on dist/styles.css && eleventy --serve\"",
-    "build:netlify": "npm run build && npm run serve"
+    "build": "NODE_ENV=production vite build && eleventy"
   },
   "repository": {
     "type": "git",

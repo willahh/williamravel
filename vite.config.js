@@ -15,9 +15,9 @@ export default defineConfig({
         assetFileNames: "styles.css",
       },
     },
-    watch: {
-      include: ["src/**/*.{css,html,njk}", "src/_includes/**/*.{css,html,njk}"],
-    },
+    // watch: {
+    //   include: ["src/**/*.{css,html,njk}", "src/_includes/**/*.{css,html,njk}"],
+    // },
   },
   css: {
     postcss: {
