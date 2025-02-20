@@ -1,15 +1,23 @@
-<div class="md:flex justify-between items-center gap-8">
-  <div class="text-justify">
-    <h1 class="text-3xl">William Ravel</h1>
+<div class="md:flex justify-between items-center gap-8 mb-14 ">
+  <div>
+    <h1 class="font-fira-mono font-medium text-3xl">William Ravel</h1>
     <h2 class="text-primary-100">Freelance React / NodeJS / Clojure</h2>
   </div>
   <div class="flex gap-6 text-primary-50 text-xs items-center">
     <a
-      href=""
-      class="text-white hover:text-white bg-primary-400 rounded-full py-1 px-3"
+      href="/"
+      class="{% if page.url == '/' %}text-white bg-primary-400 rounded-full py-1 px-3{% else %}hover:text-white{% endif %}"
       >A propos</a
     >
-    <a href="" class="hover:text-white">CV</a>
-    <a href="" class="hover:text-white">Projets</a>
+    <a
+      href="/cv/"
+      class="{% if page.url == '/cv/' %}text-white bg-primary-400 rounded-full py-1 px-3{% else %}hover:text-white{% endif %}"
+      >CV</a
+    >
+    <a
+      href="/projets/"
+      class="{% if page.url == '/projets/' %}text-white bg-primary-400 rounded-full py-1 px-3{% else %}hover:text-white{% endif %}"
+      >Projets</a
+    >
   </div>
 </div>
