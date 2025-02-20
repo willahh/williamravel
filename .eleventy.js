@@ -1,10 +1,14 @@
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy('src/images'); // Copie tout le dossier images
+export default function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("./src/v1/images");
+  eleventyConfig.addPassthroughCopy("./dist");
+
+
   return {
     dir: {
-      input: 'src/v1',
-      includes: '_includes', // Dossier des partials
-      output: '_site',
+      input: "src/v1", // Source dans src/v1
+      output: "_site", // Sortie dans _site au lieu de dist
+      includes: "_includes",
     },
+    templateFormats: ["njk", "html"],
   };
-};
+}

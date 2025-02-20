@@ -1,25 +1,27 @@
 {
   "name": "williamravel",
   "version": "1.0.0",
+  "type": "module",
   "description": "Site internet williamravel",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build:vite": "vite build",
+    "build:eleventy": "NODE_ENV=production eleventy",
+    "build": "npm run build:vite && npm run build:eleventy",
+    "dev:vite": "vite build --watch",
+    "dev": "npm run dev:vite & npm run start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willahh/williamravel-site.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/willahh/williamravel-site/issues"
-  },
-  "homepage": "https://github.com/willahh/williamravel-site#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/postcss": "^4.0.7",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.7",
+    "vite": "^6.1.1"
   }
 }
