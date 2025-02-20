@@ -6,6 +6,7 @@ export default function (eleventyConfig) {
   console.log("Eleventy config chargé !");
 
   eleventyConfig.addPassthroughCopy("./src/images");
+  eleventyConfig.addPassthroughCopy("./src/favicon");
   eleventyConfig.addPassthroughCopy({ "./dist": "dist" }, { debug: true });
 
   // Active chokidar uniquement en mode développement
