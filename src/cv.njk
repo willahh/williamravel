@@ -3,52 +3,55 @@
     {% include "./_includes/head.html" %}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const triggers = document.querySelectorAll('.tooltip-trigger');
-            let currentTooltip = null;
-            let targetX = 0,
-                targetY = 0,
-                currentX = 0,
-                currentY = 0;
-            const easing = 0.1; // Contrôle le "momentum" (plus petit = plus lent) Fonction pour animer le mouvement avec momentum
-            function animate() {
-                if (! currentTooltip) 
-                    return;
-                
-                currentX += (targetX - currentX) * easing;
-                currentY += (targetY - currentY) * easing;
-                currentTooltip.style.transform = `translate(${currentX}px, ${currentY}px)`;
-                requestAnimationFrame(animate);
-            }
-            triggers.forEach((trigger) => {
-                const tooltipId = trigger.getAttribute('data-tooltip-id');
-                const tooltip = document.getElementById(tooltipId);
-                trigger.addEventListener('mouseenter', () => {
-                    tooltip.classList.remove('hidden');
-                    tooltip.classList.add('visible');
-                    currentTooltip = tooltip;
+            {
+                # const triggers = document.querySelectorAll('.tooltip-trigger');
+                let currentTooltip = null;
+                let targetX = 0,
+                    targetY = 0,
+                    currentX = 0,
+                    currentY = 0;
+                const easing = 0.1; // Contrôle le "momentum" (plus petit = plus lent) Fonction pour animer le mouvement avec momentum
+                function animate() {
+                    if (! currentTooltip) 
+                        return;
+                    
+                    currentX += (targetX - currentX) * easing;
+                    currentY += (targetY - currentY) * easing;
+                    currentTooltip.style.transform = `translate(${currentX}px, ${currentY}px)`;
                     requestAnimationFrame(animate);
+                }
+                triggers.forEach((trigger) => {
+                    const tooltipId = trigger.getAttribute('data-tooltip-id');
+                    const tooltip = document.getElementById(tooltipId);
+                    trigger.addEventListener('mouseenter', () => {
+                        tooltip.classList.remove('hidden');
+                        tooltip.classList.add('visible');
+                        currentTooltip = tooltip;
+                        requestAnimationFrame(animate);
+                    });
+                    trigger.addEventListener('mouseleave', () => {
+                        tooltip.classList.remove('visible');
+                        tooltip.classList.add('hidden');
+                        currentTooltip = null;
+                    });
+                    trigger.addEventListener('mousemove', (e) => {
+                        const rect = trigger.getBoundingClientRect();
+                        targetX = e.clientX - rect.left + 20; // Décalage de 20px à droite du curseur
+                        targetY = e.clientY - rect.top + 20; // Décalage de 20px sous le curseur
+                    });
                 });
-                trigger.addEventListener('mouseleave', () => {
-                    tooltip.classList.remove('visible');
-                    tooltip.classList.add('hidden');
-                    currentTooltip = null;
-                });
-                trigger.addEventListener('mousemove', (e) => {
-                    const rect = trigger.getBoundingClientRect();
-                    targetX = e.clientX - rect.left + 20; // Décalage de 20px à droite du curseur
-                    targetY = e.clientY - rect.top + 20; // Décalage de 20px sous le curseur
-                });
-            });
+                #
+            }
         });
     </script>
     {% macro project(title, description, link, techCategories) %}
         <div class="[&_a]:underline">
-            <h4 class="tooltip-trigger text-primary-200 font-semibold" data-tooltip-id="tooltip-{{ title | lower | replace(' ', '-') }}">{{ title }}</h4>
-            <p>{{ description }}
+            <h4 class="tooltip-trigger text-white font-semibold" data-tooltip-id="tooltip-{{ title | lower | replace(' ', '-') }}">{{ title }}</h4>
+            <div>{{ description | safe }}
                 {% if link %}
                     <a href="{{ link }}" target="_blank">{{ link }}</a>
                 {% endif %}
-            </p>
+            </div>
             <ul class="flex flex-col gap-1 mt-2">
                 {% for category in techCategories %}
                     <li
@@ -64,7 +67,7 @@
             <div
                 id="tooltip-{{ title | lower | replace(' ', '-') }}"
                 class="tooltip hidden absolute z-50 w-96 bg-white shadow-lg rounded-lg p-4 pointer-events-none">
-                <img src="https://via.placeholder.com/300x150" alt="{{ title }}" class="w-full h-auto rounded-md mb-2">
+                {# <img src="https://via.placeholder.com/300x150" alt="{{ title }}" class="w-full h-auto rounded-md mb-2"> #}
                 <p class="text-sm text-gray-700">{{ description }}</p>
             </div>
         </div>
@@ -72,13 +75,14 @@
     <div class="container max-w-3xl mx-auto p-8 py-20 font-fira-code">
         {% include "./_includes/header.html" %}
         <div
-            class="sm:grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-[22ch_1fr] sm:relative sm:-left-62 sm:w-240" >
-            <!-- item -->
+            class="sm:grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-[22ch_1fr] sm:relative sm:-left-62 sm:w-240">
+            <!-- item Onywave -->
             <div class="sm:text-right">Onywave<br> 04/2024 - Présent</div>
             <div class="flex flex-col gap-2">
-                <h3 class="text-white ">Développeur full-stack</h3>
+                <h3 class="text-primary-200">Product designer, web developer
+                </h3>
                 <div class="flex flex-col gap-y-12">
-{{ project(
+                    {{ project(
     "ColoringBook",
     "Outil de création de documents pour l’impression. Créer un livre, ajouter des pages, ajouter des éléments graphiques, des dessins et du texte. Sauvegarde au format PDF, impression au format PDF.",
     "https://github.com/willahh/coloringbook",
@@ -90,7 +94,7 @@
 ) }}
                     {{ project(
     "Notizen",
-    "Outil de création de notes, approche offline first avec synchronisation des données locale vers une base de données partagée.",
+    "<p>Outil de création de notes, approche offline first avec synchronisation des données locale vers une base de données partagée.</p>",
     "https://github.com/willahh/notizen",
     [
         { "name": "Frontend :", "items": ["Electron", "TS", "ReactCreateApp", "React", "Redux", "Redux Toolkit", "Slate"] },
@@ -101,57 +105,232 @@
                 </div>
             </div>
             <!-- /item -->
-
-
-
-
-
-
-            <!-- item -->
+            <!-- item Electre -->
             <div class="sm:text-right">Electre<br> 08/2019 - 04/2024</div>
             <div class="flex flex-col gap-2">
-                <h3 class="text-white ">Développeur full-stack</h3>
+                <h3 class="text-primary-200">Développeur full-stack</h3>
                 <div class="flex flex-col gap-y-12">
                     {{ project(
     "Refonte portail
 ",
-    "Electre est une plateforme spécialisée dans la gestion et la diffusion de notices bibliographiques pour le secteur du livre. Le portail de notices permet aux utilisateurs (bibliothèques, éditeurs, libraires) de consulter, rechercher et gérer des fiches détaillées de livres, ainsi que de passer des commandes via un système intégré.
+    "
+    <ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<li>Contribution à la refonte du portail web pour la consultation et recherche de notices de livres, collaboration avec équipes métiers, fonctionnelles et techniques dans un environnement de travail Agile/Scrum.</li>
+<li>Participation au développement du frontend en React / ClojureScript et du backend en Clojure / Java, avec PostgreSQL et Apache Solr pour les recherches de notices via des index optimisés.</li>
+<li>Participation au développement de l’API REST externe fournie aux clients pour gérer leurs notices personnelles, paniers et bons de commande.</li>
+<li>Application du Domain Driven Design (DDD) pour modéliser le domaine métier, du TDD, ainsi que du BDD avec tests en Gherkin</li>
+<li>Utilisation d’architectures Hexagonale, Event-Driven, et communication via Pub/Sub sur Google Cloud Platform.</li>
+<li>Monitoring avec DataDog, création de dashboards et optimisation des performances.</li>
+<li>Déploiement CI/CD via GitLab. Gestion des environnements colorisés et clusters Kubernetes, assurés par une équipe de DevOps.</li>
+</ul>
 
     
 ",
     "https://dataservices.electre.com/",
     [
-        { "name": "", "items": ["React", "Clojure", "ClojureScript", "PostgreSQL", "Apache Solr", "Google Cloud Platform (GCP)", "GitLab", "Test Driven Development", "Java", "Google Cloud Dataflow"]}
+        { "name": "", "items": ["React", "Clojure", "ClojureScript", "PostgreSQL", "Apache Solr", "Google Cloud Platform (GCP)", "GitLab", "Test Driven Development", "Java", "Google Cloud Dataflow", "Kubernetes"]}
     ]
 ) }}
                 </div>
             </div>
             <!-- /item -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- item -->
+            <!-- item Goaland -->
             <div class="sm:text-right">Goaland<br> 01/2016 - 08/2019</div>
             <div class="flex flex-col gap-2">
-                <h3 class="text-white ">Développeur Front End</h3>
+                <h3 class="text-primary-200">Développeur Front-end, UI designer</h3>
                 <div class="flex flex-col gap-y-12">
+                    <h2 class="-mb-8 text-white font-bold">Logiciel SASS de production de prospectus pour la grande distribution</h2>
                     {{ project(
-    "Refonte portail
-",
-    "Goaland est un éditeur de logiciels proposant une offre PIM (Product Information Management), un outil de création de catalogues automatisés basé sur Adobe InDesign Server pour la génération de documents et un frontend interactif, ainsi que des services d’automatisation de contenus marketing et de gestion d’actifs numériques (DAM). Ces outils sont utilisés par les secteurs de la grande distribution et du commerce pour améliorer l’efficacité des équipes commerciales et digitales.",
+    "Module Chemin de fer",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<li>Design des interfaces</li>
+<li>Création du front d'un module chemin de fer de préparation de documents et prospectus</li>
+<li>Drag and drop de produits depuis un chutier vers des pages</li>
+<li>Affichage des promotions sur les produits dans la page</li>
+<li>Interactions sur les pages : zoom, déplacement</li>
+<li>Annotation sur page avec différents outils : punaise, rectangle, tracé à la main</li>
+<li>Interface avec panneaux redimensionnables / repliables</li>
+<li>Utilisation au clavier / Raccourcis clavier.</li>
+<li>Compatibilité IE6-IE10, Échanges XHR au format JSON, +200 vues.</li>
+</ul>
+
+    ",
     "https://www.goaland.com",
     [
-        { "name": "", "items": ["Javascript", "jQuery", "Bootstrap", "ExtJS", "PHP", "Sencha Touch", "ActionScript 3", "Accessibilité", "Illustrator", " Photoshop"]}
+        { "name": "", "items": ["Javascript", "jQuery", "Bootstrap", "ExtJS", "PHP", "MVC", "IE6", "IE10", "SPA", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                    {{ project(
+    "Module DAM (Digital asset Management)",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<li>Création du front d'une galerie paginée avec différents outils et vues (liste / vignette), agrandissement / réduction des images</li>
+<li>Interface avec panneaux redimensionnables / repliables</li>
+<li>Compatibilité IE6-IE10, Échanges XHR au format JSON</li>
+</ul>
+
+    ",
+    "",
+    [
+        { "name": "", "items": ["Javascript", "ExtJS", "jQuery", "PHP", "IE6", "IE10", "SPA", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                    {{ project(
+    "Projet e-commerce premium",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<li>Intégration responsive HTML / CSS / Javascript à partir de maquettes graphiques fournies par une agence</li>
+<li>Création d’un système de grille responsive à 6 points de rupture : mobile / tablette / petite résolution / résolution standard / très grande résolution. Chargement des images dans la résolution qui convient le mieux selon le point de rupture</li>
+<li>Configurateur en ligne responsive et interactif permettant de charger des modèles et de les visualiser sous différents angles avec différents tissus / accessoires.
+Création du front - SPA javascript IE10, jQuery</li>
+<li>Réalisation des tâches Grunt pour les différents modules</li>
+<li>Optimisation des performances et de la taille des bundles js : Le site doit être chargé rapidement en mobile en 3G, et consultable sur de très grande résolution, utilisation de Adobe Scene 7 pour la gestion des ressources statiques</li>
+<li>Accessibilité : Intégration des normes d’accessibilité WAI en partenariat avec une société spécialisée</li>
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": ["Javascript", "jQuery", "Grunt", "CSS", "PHP", "IE9", "IE11", "SPA", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                </div>
+            </div>
+            <!-- /item -->
+            <!-- item Goaland 2/3 -->
+            <div class="sm:text-right">Goaland<br> 01/2012 - 08/2016</div>
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary-200">UI designer, développeur front-end</h3>
+                <div class="flex flex-col gap-y-12">
+                    {{ project(
+    "Arsia - Logiciel SASS - Outil collaboratif de production de document / catalogues InDesign en ligne",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Création du front d'un outil d’édition intéractif de documents papier, brochure, catalogue. Ajout de pages, déplacement dans les pages. Navigation, création / redimensionnement de zones, dépôt de commentaires (punaises, rectangles, tracés). Utilisation au clavier / Raccourcis clavier</li>
+
+<li>Divers modules avec mapping des données vers des emplacements en drag and drop</li>
+</ul>
+
+    ",
+    "",
+    [
+        { "name": "", "items": ["Javascript", "jQuery", "Bootstrap", "Grunt", "CSS", "PHP", "IE9", "IE11", "SPA", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                    {{ project(
+    "Module DAM (Digital asset Management)",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<li>Création du front d'une galerie paginée au look Adobe Bridge avec différents outils et vues (liste / vignette), agrandissement / réduction des images</li>
+<li>Interface avec panneaux redimensionnables / repliables</li>
+<li>Compatibilité IE6-IE10, Échanges XHR au format JSON</li>
+</ul>
+
+    ",
+    "",
+    [
+        { "name": "", "items": ["Javascript", "jQuery", "Bootstrap", "Handlebar", "PHP", "IE6", "IE10", "SPA", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                    {{ project(
+    "Site web",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Design et intégration du site web</li>
+</ul>
+
+    ",
+    "",
+    [
+        { "name": "", "items": []}
+    ]
+) }}
+                </div>
+            </div>
+            <!-- /item -->
+            <!-- item Goaland 3/3 -->
+            <div class="sm:text-right">Goaland<br> 01/2009 - 01/2012</div>
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary-200">UI designer, développeur ActionScript et Javascript</h3>
+                <h4>Sygesp - Système de gestion de production</h4>
+                <div class="flex flex-col gap-y-12">
+                    {{ project(
+    "Outil d’édition des zones ",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Responsable de la conception UI/UX et des améliorations quotidiennes</li>
+<li>Création d'un outil interactif et animé en Flash et Actionscript, d’édition de documents papier, brochure, catalogue.</li>
+<li>Outils de dessin sur la page au crayon feutre virtuel</li>
+<li>Navigation et zoom avec animation</li>
+<li>Barre d'outils pour intéragir : main, flèche de sélection, traçage de zone, toggle de commentaires</li>
+<li>Raccourcis clavier pour chaque fonction</li>
+<li>Création et redimensionnement de zones via des ancres similaire à InDesign</li>
+<li>Dépôt de commentaires (punaises, rectangles, tracés).</li>
+<li>Échanges xhr au format xml</li>
+</ul>
+
+    ",
+    "",
+    [
+        { "name": "", "items": ["Flash", "ActionScript", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                    {{ project(
+    "Outil de crop d’image",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Création d'un outil en Flash et Actionscript permettant de cropper une image 
+    dans une zone prédéfinie.</li>
+<li>Zoom / Déplacement / Rotation</li>
+<li>Symétries horizontales et verticales</li>
+<li>Saisie à la main précises des coordonnées et dimensions : x, y, angle, largeur, hauteur, scale x, scale y</li>
+<li>Zoom débordant ou centré dans le conteneur</li>
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": []}
+    ]
+) }}
+                    {{ project(
+    "Outil d’annotation d’une page",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Outil intéractif permettant de naviguer (déplacement / zoom) et d’ajouter 
+    des commentaires sous forme de punaise.</li>
+<li>Création du front - Actionscript 2 / 3</li>
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": []}
+    ]
+) }}
+                    {{ project(
+    "Module Flipbook",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Lecteur de page, compatible iPad 4 et Android. Nombre de pages illimitées
+     via une pagination virtuelle.</li>
+<li>Création du front - HTML5 - ExtJS - Sencha Touch</li>
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": []}
+    ]
+) }}
+                    {{ project(
+    "Sygesp",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Participation à l’élaboration de l’interface et de l’ergonomie du produit. 
+    Rédaction de la documentation utilisateur au format web.</li>
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": []}
     ]
 ) }}
                 </div>
@@ -161,9 +340,87 @@
 
 
 
+            <!-- item Goaland 4/4 -->
+            <div class="sm:text-right">Goaland<br> 01/2006 - 01/2009</div>
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary-200">UI designer, web integrator</h3>
+
+                <div class="flex flex-col gap-y-12">
+                   
+                    {{ project(
+    "Sygesp",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<li>Intégration [HTML / CSS / Javascript] de différents projets allant de boutiques en ligne / CRM / Sites événementiel / Sites luxe et back-offices</li>
+<li>Réalisation de maquettes avec Photoshop et Illustrator</li>
+<li>Découpage HTML !</li>
+<li>Réalisation de widgets / intéractions Ajax et autres dynamisations diverses</li>
+<li>Maintenance de CSS avancés</li>
+<li>Compatibilité des navigateurs IE6 à IE11</li>
+
+    ",
+    "",
+    [
+        { "name": "", "items": []}
+    ]
+) }}
+                </div>
+            </div>
+            <!-- /item -->
 
 
 
+            <!-- item La Compagnie Littéraire -->
+            <div class="sm:text-right">La Compagnie Littéraire<br> 09/2003 - 08/2006</div>
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary-200">UI designer, web integrator</h3>
+                <div class="flex flex-col gap-y-12">
+                    {{ project(
+    "",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+    <li>Création de la charte graphique</li>
+    <li>Création du site internet avec WordPress</li>
+    <li>Mise à jour régulière des contenus (auteurs, livres)</li>
+    <li>Mise en page de livres sous QuarkXPress.</li>
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": ["Maquettes graphique",  "Photoshop", "Illustrator", "Quark XPress", "HTML", "CSS"]}
+    ]
+) }}
+                </div>
+            </div>
+            <!-- /item -->
+
+
+            <!-- item Self-employed -->
+            <div class="sm:text-right">Self-employed<br> 01/2002 - 01/2009</div>
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary-200">UI designer, web developer</h3>
+                <div class="flex flex-col gap-y-12">
+                    {{ project(
+    "",
+    "
+<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<li>Designé et développé plus d'une vingtaines de sites web <br> 
+(Flash ❤️, Actionscript, PHP, MySQL, HTML, CSS, JS) pour la communauté du mode Counter-Strike du jeu Half-Life.
+
+<li>Suivi ma passion pour le graphisme et le développement et amélioré mes compétences 
+    pendant 7 ans en conception d'interface utilisateur, CSS, HTML et JavaScript</li>
+
+
+</ul>
+    ",
+    "",
+    [
+        { "name": "", "items": ["Flash", "Actionscript", "Javascript", "PHP", "MYSQL", "HTML", "CSS", "UI", "UX", "Illustrator", " Photoshop"]}
+    ]
+) }}
+                </div>
+            </div>
+            <!-- /item -->
         </div>
     </div>
 </html></html></body></html>
