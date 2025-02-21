@@ -4,7 +4,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             {
-                # const triggers = document.querySelectorAll('.tooltip-trigger');
+                const triggers = document.querySelectorAll('.tooltip-trigger');
                 let currentTooltip = null;
                 let targetX = 0,
                     targetY = 0,
@@ -40,7 +40,7 @@
                         targetY = e.clientY - rect.top + 20; // Décalage de 20px sous le curseur
                     });
                 });
-                #
+                
             }
         });
     </script>
@@ -84,8 +84,14 @@
                 <div class="flex flex-col gap-y-12">
                     {{ project(
     "ColoringBook",
-    "Outil de création de documents pour l’impression. Créer un livre, ajouter des pages, ajouter des éléments graphiques, des dessins et du texte. Sauvegarde au format PDF, impression au format PDF.",
-    "https://github.com/willahh/coloringbook",
+    "<p class=\"mb-3\">Outil de création de documents pour l’impression. Créer un livre, ajouter des pages, ajouter des éléments graphiques, des dessins et du texte. Sauvegarde au format PDF, impression au format PDF.</p>
+     <ul class=\"flex list-disc list-inside flex-col gap-1 mb-3\">
+    <li><a href=\"https://coloringbook-frontend.onrender.com/\" target=\"_blank\">coloringbook-frontend.onrender.com</a></li>
+    <li><a href=\"https://github.com/willahh/coloringbook\" target=\"_blank\">github.com/willahh/coloringbook</a></li>
+    </ul>
+
+",
+    "",
     [
         { "name": "Frontend :", "items": ["TS", "Vite", "React", "Redux", "Redux Toolkit", "FabricJS", "Motion"] },
         { "name": "Backend :", "items": ["Node.js", "NestJS", "TypeORM"] },
