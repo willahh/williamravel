@@ -6,27 +6,27 @@
     <h1 class="font-fira-mono font-medium text-3xl">William Ravel</h1>
     <h2 class="text-primary-100">Freelance React / NodeJS / <a href="https://clojure.org/" target="_blank" class="underline">Clojure</a></h2>
   </div>
-  <div class="flex gap-6 text-primary-50 text-sm items-center">
+  <div class="flex gap-6 text-primary-50 text-md md:text-sm items-center">
     <a
       href="/"
-      class="{% if page.url == '/' %}text-white bg-primary-400 rounded-full py-1 px-3{% else %}hover:text-white{% endif %}"
+      class="px-4 py-2 rounded-full text-white bg-secondary-100/20 md:bg-transparent {% if page.url == '/' %}!text-primary-800 !bg-primary-400{% else %}hover:text-white{% endif %}"
       >A propos</a
     >
     <a
       href="/cv/"
-      class="{% if page.url == '/cv/' %}text-white bg-primary-400 rounded-full py-1 px-3{% else %}hover:text-white{% endif %}"
+      class="px-4 py-2 rounded-full text-white bg-secondary-100/20 md:bg-transparent {% if page.url == '/cv/' %}!text-primary-800 !bg-primary-400{% else %}hover:text-white{% endif %}"
       >CV</a
     >
     <a
       href="/projets/"
-      class="{% if page.url == '/projets/' %}text-white bg-primary-400 rounded-full py-1 px-3{% else %}hover:text-white{% endif %}"
+      class="px-4 py-2 rounded-full text-white bg-secondary-100/20 md:bg-transparent {% if page.url == '/projets/' %}!text-primary-800 !bg-primary-400{% else %}hover:text-white{% endif %}"
       >Projets</a
     >
   </div>
 </div>
 <div
   id="header-mask"
-  class="fixed top-0 left-0 w-full h-44 md:h-32 z-10 backdrop-blur-xs opacity-0 transition-all duration-1000 border-b border-secondary-200/25 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] pointer-events-none"
+  class="fixed top-0 left-0 w-full h-48 md:h-32 z-10 backdrop-blur-xs opacity-0 transition-all duration-1000 border-b border-secondary-200/25 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] pointer-events-none"
 ></div>
 <style>
  
