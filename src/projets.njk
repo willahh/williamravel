@@ -2,12 +2,82 @@
 <html lang="fr">
   {% include "./_includes/head.html" %}
   {% include "./_includes/header.html" %}
-  <div class="container max-w-3xl print:max-w-none mx-auto p-8 font-fira-code">
+  <div class="container max-w-3xl print:max-w-none mx-auto p-8 !pt-0 md:py-20 font-fira-code">
     <div
       id="header-mask"
       class="fixed top-0 left-0 w-full h-48 md:h-32 z-10 backdrop-blur-xs opacity-0 transition-all duration-1000 border-b
         border-secondary-200/25 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] pointer-events-none"></div>
-    <p>Liste de mes projets récents...</p>
-    <!-- Ajoutez votre contenu projets ici -->
-  </div>
-</html></body></html>
+    {% macro project(title, description, link, techCategories) %}
+      <div class="[&_a]:underline">
+        <div
+          class="text-md tooltip-trigger text-white print:text-black font-semibold"
+          data-tooltip-id="tooltip-{{ title | lower | replace(' ', '-') }}">{{ title }}</div>
+        <div class="print:text-black">{{ description | safe }}
+          {% if link %}
+            <a href="{{ link }}" target="_blank">{{ link }}</a>
+          {% endif %}
+        </div>
+        <ul class="flex flex-col gap-1 mt-2">
+          {% for category in techCategories %}
+            <li
+              class="">
+              {# <span class="font-semibold">{{ category.name }}</span> #}
+              {% for item in category.items %}
+                <span class="py-0.5 px-1 my-4 bg-primary-500/20 border border-primary-500 text-primary-200 print:text-black rounded-md text-xs
+                  select-none">{{ item }}</span>
+              {% endfor %}
+            </li>
+          {% endfor %}
+        </ul>
+        <!-- Tooltip -->
+        <div
+          id="tooltip-{{ title | lower | replace(' ', '-') }}"
+          class="tooltip hidden absolute z-50 w-96 bg-white shadow-lg rounded-lg p-4 pointer-events-none">
+          {# <img src="https://via.placeholder.com/300x150" alt="{{ title }}" class="w-full h-auto rounded-md mb-2"> #}
+          <p class="text-sm text-gray-700 print:text-black">{{ description }}</p>
+        </div>
+      </div>
+    {% endmacro %}
+      <div
+        id="header-mask"
+        class="fixed top-0 left-0 w-full h-48 md:h-32 z-10 backdrop-blur-xs opacity-0 transition-all duration-1000 border-b
+          border-secondary-200/25 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] pointer-events-none"></div>
+      <div
+        class="sm:grid sm:grid-cols-[22ch_1fr] print:grid print:grid-cols-[22ch_1fr] not-print:sm:-left-62 gap-x-10 gap-y-12
+          sm:relative sm:w-240">
+        <!-- item Onywave -->
+        <div class="sm:text-right print:text-left print:text-gray-500 pt-10 md:pt-0 print:pt-0 !pt-0"></div>
+        <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-y-12">
+            {{ project(
+    "ColoringBook",
+    "<p class=\"mb-3\">Outil de création de documents pour l’impression. Créer un livre, ajouter des pages, ajouter des éléments graphiques, des dessins et du texte. Sauvegarde au format PDF, impression au format PDF.</p>
+     <ul class=\"flex list-disc mx-5 flex-col gap-1 mb-3\">
+    <li><a href=\"https://coloringbook-frontend.onrender.com/\" target=\"_blank\">coloringbook-frontend.onrender.com</a></li>
+    <li><a href=\"https://github.com/willahh/coloringbook\" target=\"_blank\">github.com/willahh/coloringbook</a></li>
+    </ul>
+
+",
+    "",
+    [
+        { "name": "Frontend :", "items": ["TS", "Vite", "React", "Redux", "Redux Toolkit", "FabricJS", "Motion"] },
+        { "name": "Backend :", "items": ["Node.js", "NestJS", "TypeORM"] },
+        { "name": "Platform :", "items": ["Docker", "Render.com", "NeonDB", "Supabase"] }
+    ]
+) }}
+            {{ project(
+    "Notizen",
+    "<p>Outil de création de notes, approche offline first avec synchronisation des données locale vers une base de données partagée.</p>",
+    "https://github.com/willahh/notizen",
+    [
+        { "name": "Frontend :", "items": ["Electron", "TS", "ReactCreateApp", "React", "Redux", "Redux Toolkit", "Slate"] },
+        { "name": "Backend :", "items": ["Node.js", "NestJS", "TypeORM"] },
+        { "name": "Platform :", "items": ["Docker", "Google GCP"] }
+    ]
+) }}
+          </div>
+        </div>
+        <!-- /item -->
+      </div>
+    </body>
+</html>

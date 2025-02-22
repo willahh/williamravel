@@ -43,6 +43,7 @@
             }
         });
     </script>
+    {% include "./_includes/header.html" %}
     {% macro project(title, description, link, techCategories) %}
         <div class="[&_a]:underline">
             <div
@@ -73,7 +74,6 @@
             </div>
         </div>
     {% endmacro %}
-    {% include "./_includes/header.html" %}
     <div class="container max-w-3xl print:max-w-none mx-auto p-8 !pt-0 font-fira-code">
         <div
             id="header-mask"
