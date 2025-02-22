@@ -1,0 +1,54 @@
+@media print {
+  #header button,
+  #header-mask,
+  #header .flex.items-center.gap-6 {
+    display: none !important;
+  }
+
+  * {
+    color: #000 !important;
+  }
+  a {
+    text-decoration: none !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+ 
+  .sm\\:grid {
+    display: block !important; /* Force l’affichage en bloc au lieu de la grille */
+  }
+  
+
+  body,
+  .font-fira-code {
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+  }
+
+  @page {
+    margin: 20mm;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-size: 14pt !important;
+    margin-bottom: 10pt !important;
+  }
+
+  ul {
+    margin-left: 20pt !important;
+    padding-left: 0 !important;
+  }
+
+  .bg-primary-500\\/20 {
+    background-color: #f3f4f6 !important;
+    border: none !important;
+    color: #374151 !important;
+  }
+}
