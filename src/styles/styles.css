@@ -5,12 +5,13 @@
 @import './print.css';
 
 
+
+
 :root {
   font-size: 12.25px; /* Redéfinit 1rem = 12px */
 }
 body {
   font-family: 'Fira Code', monospace;
-  /* font-size: 12px; */
 }
 
 .tooltip {
