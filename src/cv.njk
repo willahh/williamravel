@@ -40,7 +40,6 @@
                         targetY = e.clientY - rect.top + 20; // Décalage de 20px sous le curseur
                     });
                 });
-                
             }
         });
     </script>
@@ -74,18 +73,21 @@
     {% endmacro %}
     <div class="container max-w-3xl mx-auto p-8 py-20 font-fira-code">
         {% include "./_includes/header.html" %}
+        <div class="sm:grid grid-cols-2 gap-x-10 sm:grid-cols-[22ch_1fr] sm:relative sm:-left-62 sm:w-240">
+            <div></div>
+            <h2 class="text-white text-sm mb-2">Expériences</h3>
+        </div>
         <div
             class="sm:grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-[22ch_1fr] sm:relative sm:-left-62 sm:w-240">
             <!-- item Onywave -->
             <div class="sm:text-right">Onywave<br> 04/2024 - Présent</div>
             <div class="flex flex-col gap-2">
-                <h3 class="text-primary-200">Product designer, web developer
-                </h3>
+                <h3 class="text-primary-200">Product designer, web developer</h3>
                 <div class="flex flex-col gap-y-12">
                     {{ project(
     "ColoringBook",
     "<p class=\"mb-3\">Outil de création de documents pour l’impression. Créer un livre, ajouter des pages, ajouter des éléments graphiques, des dessins et du texte. Sauvegarde au format PDF, impression au format PDF.</p>
-     <ul class=\"flex list-disc list-inside flex-col gap-1 mb-3\">
+     <ul class=\"flex list-disc mx-5 flex-col gap-1 mb-3\">
     <li><a href=\"https://coloringbook-frontend.onrender.com/\" target=\"_blank\">coloringbook-frontend.onrender.com</a></li>
     <li><a href=\"https://github.com/willahh/coloringbook\" target=\"_blank\">github.com/willahh/coloringbook</a></li>
     </ul>
@@ -120,7 +122,7 @@
     "Refonte portail
 ",
     "
-    <ul class=\"flex list-disc list-inside flex-col gap-2 \">
+    <ul class=\"flex list-disc mx-5 flex-col gap-2 \">
 <li>Contribution à la refonte du portail web pour la consultation et recherche de notices de livres, collaboration avec équipes métiers, fonctionnelles et techniques dans un environnement de travail Agile/Scrum.</li>
 <li>Participation au développement du frontend en React / ClojureScript et du backend en Clojure / Java, avec PostgreSQL et Apache Solr pour les recherches de notices via des index optimisés.</li>
 <li>Participation au développement de l’API REST externe fournie aux clients pour gérer leurs notices personnelles, paniers et bons de commande.</li>
@@ -149,7 +151,7 @@
                     {{ project(
     "Module Chemin de fer",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">
 <li>Design des interfaces</li>
 <li>Création du front d'un module chemin de fer de préparation de documents et prospectus</li>
 <li>Drag and drop de produits depuis un chutier vers des pages</li>
@@ -170,7 +172,7 @@
                     {{ project(
     "Module DAM (Digital asset Management)",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">
 <li>Création du front d'une galerie paginée avec différents outils et vues (liste / vignette), agrandissement / réduction des images</li>
 <li>Interface avec panneaux redimensionnables / repliables</li>
 <li>Compatibilité IE6-IE10, Échanges XHR au format JSON</li>
@@ -185,7 +187,7 @@
                     {{ project(
     "Projet e-commerce premium",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">
 <li>Intégration responsive HTML / CSS / Javascript à partir de maquettes graphiques fournies par une agence</li>
 <li>Création d’un système de grille responsive à 6 points de rupture : mobile / tablette / petite résolution / résolution standard / très grande résolution. Chargement des images dans la résolution qui convient le mieux selon le point de rupture</li>
 <li>Configurateur en ligne responsive et interactif permettant de charger des modèles et de les visualiser sous différents angles avec différents tissus / accessoires.
@@ -203,7 +205,6 @@ Création du front - SPA javascript IE10, jQuery</li>
                 </div>
             </div>
             <!-- /item -->
-
             <!-- item Goaland 2/3 -->
             <div class="sm:text-right">Goaland<br> 01/2012 - 08/2016</div>
             <div class="flex flex-col gap-2">
@@ -212,7 +213,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Arsia - Logiciel SASS - Outil collaboratif de production de document / catalogues InDesign en ligne",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Création du front d'un outil d’édition intéractif de documents papier, brochure, catalogue. Ajout de pages, déplacement dans les pages. Navigation, création / redimensionnement de zones, dépôt de commentaires (punaises, rectangles, tracés). Utilisation au clavier / Raccourcis clavier</li>
 
 <li>Divers modules avec mapping des données vers des emplacements en drag and drop</li>
@@ -227,7 +228,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Module DAM (Digital asset Management)",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">
 <li>Création du front d'une galerie paginée au look Adobe Bridge avec différents outils et vues (liste / vignette), agrandissement / réduction des images</li>
 <li>Interface avec panneaux redimensionnables / repliables</li>
 <li>Compatibilité IE6-IE10, Échanges XHR au format JSON</li>
@@ -242,7 +243,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Site web",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Design et intégration du site web</li>
 </ul>
 
@@ -255,7 +256,6 @@ Création du front - SPA javascript IE10, jQuery</li>
                 </div>
             </div>
             <!-- /item -->
-
             <!-- item Goaland 3/4 -->
             <div class="sm:text-right">Goaland<br> 01/2009 - 01/2012</div>
             <div class="flex flex-col gap-2">
@@ -265,7 +265,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Outil d’édition des zones ",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Responsable de la conception UI/UX et des améliorations quotidiennes</li>
 <li>Création d'un outil interactif et animé en Flash et Actionscript, d’édition de documents papier, brochure, catalogue.</li>
 <li>Outils de dessin sur la page au crayon feutre virtuel</li>
@@ -286,7 +286,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Outil de crop d’image",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Création d'un outil en Flash et Actionscript permettant de cropper une image 
     dans une zone prédéfinie.</li>
 <li>Zoom / Déplacement / Rotation</li>
@@ -303,7 +303,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Outil d’annotation d’une page",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Création d'un outil intéractif permettant de naviguer (déplacement / zoom) et d’ajouter 
     des commentaires sous forme de punaise.</li>
 <li>Création du front - Actionscript 2 / 3</li>
@@ -317,7 +317,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Module Flipbook",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Création d'une visioneuse de documents, compatible iPad 4 et Android. 
     Nombre de pages illimitées avec un système de tampon de 3 pages visibles à l'écran et de suppression 
     de celles qui n'apparaissent plus pour compatibilité mémoire sur les tablettes.</li>
@@ -331,7 +331,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "Sygesp",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Participation à l’élaboration de l’interface et de l’ergonomie du produit.</li>
 <li>Rédaction de la documentation utilisateur au format web.</li>
 <li>Maintenance de CSS avancés dans le temps</li>
@@ -345,21 +345,15 @@ Création du front - SPA javascript IE10, jQuery</li>
                 </div>
             </div>
             <!-- /item -->
-
-
-
-
             <!-- item Goaland 4/4 -->
             <div class="sm:text-right">Goaland<br> 01/2006 - 01/2009</div>
             <div class="flex flex-col gap-2">
                 <h3 class="text-primary-200">UI designer, web integrator</h3>
-
                 <div class="flex flex-col gap-y-12">
-                   
                     {{ project(
     "",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">  
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">  
 <li>Intégration (découpage HTML !) HTML / CSS / Javascript de différents projets allant de boutiques en ligne /
      CRM / Sites événementiel / Sites luxe et back-offices</li>
 <li>Réalisation de maquettes avec Photoshop et Illustrator</li>
@@ -375,9 +369,6 @@ Création du front - SPA javascript IE10, jQuery</li>
                 </div>
             </div>
             <!-- /item -->
-
-
-
             <!-- item La Compagnie Littéraire -->
             <div class="sm:text-right">La Compagnie Littéraire<br> 09/2003 - 08/2006</div>
             <div class="flex flex-col gap-2">
@@ -386,7 +377,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">
     <li>Création de la charte graphique</li>
     <li>Création du site internet avec WordPress</li>
     <li>Mise à jour régulière des contenus (auteurs, livres)</li>
@@ -401,8 +392,6 @@ Création du front - SPA javascript IE10, jQuery</li>
                 </div>
             </div>
             <!-- /item -->
-
-
             <!-- item Self-employed -->
             <div class="sm:text-right">Self-employed<br> 01/2002 - 01/2009</div>
             <div class="flex flex-col gap-2">
@@ -411,7 +400,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                     {{ project(
     "",
     "
-<ul class=\"flex list-disc list-inside flex-col gap-2 \">
+<ul class=\"flex list-disc mx-5 flex-col gap-2 \">
 <li>Designé et développé plus d'une vingtaines de sites web <br> 
 (Flash ❤️, Actionscript, PHP, MySQL, HTML, CSS, JS) pour la communauté du mode Counter-Strike du jeu Half-Life.
 
@@ -430,5 +419,91 @@ Création du front - SPA javascript IE10, jQuery</li>
             </div>
             <!-- /item -->
         </div>
-    </div>
-</html></html></body></html>
+        <!-- compétences -->
+        <div class="sm:grid grid-cols-2 gap-x-10 sm:grid-cols-[22ch_1fr] sm:relative sm:-left-62 sm:w-240">
+            <div></div>
+            <div>
+                <h2 class="text-white text-md mb-2 mt-20">Compétences</h3>
+                <ul class="flex list-disc mx-5 flex-col gap-2">
+                    <li>
+                        <div>
+                            Languages :
+                        </div>
+                        Javascript, TypeScript, Clojure, PHP, CSS, Java, Bash, Action-Script, Emacs-Lisp
+                    </li>
+                    <li>
+                        <div>
+                            Frameworks / librairies :
+                        </div>
+                        React, Redux, NextJS, NestJS, TypeORM, Tailwind CSS, Bootstrap, jQuery, Ext-JS, Semantic
+                        UI
+                    </li>
+                    <li>
+                        <div>
+                            Systèmes de données et recherche :
+                            <div>
+                                PostgreSQL, MySQL, Apache
+                                                                Solr
+                            </li>
+                            <li>
+                                <div>
+                                    Plateformes et API Google Cloud Platform :
+                                </div>
+                                Dataflow, Storage, Pub Sub, Kubernetes, Gitlab : Board, issues, CI / CD, API REST,
+                                Render.com
+                            </li>
+                            <li>
+                                <div>
+                                    Architectures :
+                                </div>
+                                Hexagonale, DDD, Event-Driven, MVC, Trois
+                                                                                                tiers
+                            </li>
+                            <li>
+                                <div>
+                                    Testing :
+                                </div>TDD Test Driven Development, BDD Behaviour Driven
+                                Development
+                            </li>
+                            <li>
+                                <div>
+                                    Méthodologies :
+                                </div>
+                                Agile, Scrum (sprint planning /poker planning, rétros, …) Outils Git, SVN, VSCode, IntelliJ, Emacs, Eclipse,
+                                Sublime
+                            </li>
+                            <li>
+                                <div>
+                                    Outils graphiques :
+                                </div>
+                                Figma, suite Adobe : Photoshop / Illustrator / Indesign /
+                                                                XD
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </li>
+        </div>
+        <!-- /compétences -->
+        <!-- Contact -->
+        <div class="sm:grid grid-cols-2 gap-x-10 sm:grid-cols-[22ch_1fr] sm:relative sm:-left-62 sm:w-240">
+            <div></div>
+            <div>
+                <h2 class="text-white text-md mb-2 mt-20">Contact</h3>
+                <ul class="flex list-disc mx-5 flex-col gap-2">
+                    <li>Email: <a href="mailto:wravel@gmail.com" class="underline">wravel@gmail.com</a></li>
+                    <li>Linkedin :
+                        <a href="https://www.linkedin.com/in/wravel/" target="_blank" class="underline">linkedin.com/in/wravel</a>
+                    </li>
+                    <li>Github :
+                        <a href="https://github.com/willahh" target="_blank" class="underline">github.com/willahh</a>
+                    </li>
+                    <li>X:
+                        <a href="https://x.com/willahhravel" target="_blank" class="underline">x.com/willahhravel</a>
+                    </li>
+                </div>
+            </li>
+        </div>
+        <!-- /Contact -->
+    </li>
+</html></div></html></html></body></html>
