@@ -3,12 +3,9 @@
     margin: 20mm;
   } */
   @page {
-    margin: 0; /* Supprime les marges par défaut où les en-têtes sont placés */
+    margin: 20mm; /* Supprime les marges par défaut où les en-têtes sont placés */
   }
-  .container {
-    margin: 20mm;
-    padding: 20mm;
-  }
+ 
 
   div {
     color: #000;
