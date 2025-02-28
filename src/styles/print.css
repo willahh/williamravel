@@ -1,9 +1,18 @@
 @media print {
-  @page {
+  /* @page {
     margin: 20mm;
+  } */
+  @page {
+    margin: 0; /* Supprime les marges par défaut où les en-têtes sont placés */
+  }
+  .container {
+    margin: 20mm;
+    padding: 20mm;
   }
 
-  div {color: #000;}
+  div {
+    color: #000;
+  }
 
   .break-page-before {
     page-break-before: always !important;
@@ -17,7 +26,14 @@
     page-break-inside: avoid !important;
   }
 
-  h1, h2, h3, h4, h5 {margin: 0 !important; padding: 0 !important;}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
   #header button,
   #header-mask,
@@ -34,5 +50,4 @@
   .border-primary-500 {
     border: 1px solid #ccc !important;
   }
-
 }
