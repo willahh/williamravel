@@ -4,42 +4,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             {
-                const triggers = document.querySelectorAll('.tooltip-trigger');
-                let currentTooltip = null;
-                let targetX = 0,
-                    targetY = 0,
-                    currentX = 0,
-                    currentY = 0;
-                const easing = 0.1; // Contrôle le "momentum" (plus petit = plus lent) Fonction pour animer le mouvement avec momentum
-                function animate() {
-                    if (! currentTooltip) 
-                        return;
-                    
-                    currentX += (targetX - currentX) * easing;
-                    currentY += (targetY - currentY) * easing;
-                    currentTooltip.style.transform = `translate(${currentX}px, ${currentY}px)`;
-                    requestAnimationFrame(animate);
-                }
-                triggers.forEach((trigger) => {
-                    const tooltipId = trigger.getAttribute('data-tooltip-id');
-                    const tooltip = document.getElementById(tooltipId);
-                    trigger.addEventListener('mouseenter', () => {
-                        tooltip.classList.remove('hidden');
-                        tooltip.classList.add('visible');
-                        currentTooltip = tooltip;
-                        requestAnimationFrame(animate);
-                    });
-                    trigger.addEventListener('mouseleave', () => {
-                        tooltip.classList.remove('visible');
-                        tooltip.classList.add('hidden');
-                        currentTooltip = null;
-                    });
-                    trigger.addEventListener('mousemove', (e) => {
-                        const rect = trigger.getBoundingClientRect();
-                        targetX = e.clientX - rect.left + 20; // Décalage de 20px à droite du curseur
-                        targetY = e.clientY - rect.top + 20; // Décalage de 20px sous le curseur
-                    });
-                });
+                
             }
         });
     </script>
@@ -90,7 +55,7 @@
             <!-- item Onywave -->
             <div class="sm:text-right print:text-left print:text-gray-500 pt-10 md:pt-0 print:pt-0 !pt-0">Onywave<br> 04/2024 - Présent</div>
             <div class="flex flex-col gap-2">
-                <div class="text-md text-primary-200">Développeur Full stack, UI designer</div>
+                <div class="text-md text-primary-200">Développeur Full Stack & UI</div>
                 <div class="flex flex-col gap-y-12">
                     {{ project(
     "ColoringBook",
@@ -103,7 +68,7 @@
 ",
     "",
     [
-        { "name": "Frontend :", "items": ["TS", "Vite", "React", "Redux", "Redux Toolkit", "FabricJS", "Motion"] },
+        { "name": "Frontend :", "items": ["TypeScript", "React", "Redux", "Redux Toolkit", "Vite", "FabricJS", "Motion"] },
         { "name": "Backend :", "items": ["Node.js", "NestJS", "TypeORM"] },
         { "name": "Platform :", "items": ["Docker", "Render.com", "NeonDB", "Supabase"] }
     ]
@@ -113,7 +78,7 @@
     "<p>Outil de création de notes, approche offline first avec synchronisation des données locale vers une base de données partagée.</p>",
     "https://github.com/willahh/notizen",
     [
-        { "name": "Frontend :", "items": ["Electron", "TS", "ReactCreateApp", "React", "Redux", "Redux Toolkit", "Slate"] },
+        { "name": "Frontend :", "items": ["TypeScript", "Electron", "React", "Redux", "Redux Toolkit", "Slate"] },
         { "name": "Backend :", "items": ["Node.js", "NestJS", "TypeORM"] },
         { "name": "Platform :", "items": ["Docker", "Google GCP"] }
     ]
@@ -124,7 +89,7 @@
             <!-- item Electre -->
             <div class="sm:text-right print:text-left print:text-gray-500 pt-10 md:pt-0 print:pt-0">Electre<br> 08/2019 - 04/2024</div>
             <div class="flex flex-col gap-2">
-                <div class="text-md text-primary-200">Développeur full-stack</div>
+                <div class="text-md text-primary-200">Développeur Full Stack</div>
                 <div class="flex flex-col gap-y-12">
                     {{ project(
     "Refonte portail
@@ -144,7 +109,7 @@
 ",
     "https://dataservices.electre.com/",
     [
-        { "name": "", "items": ["React", "Clojure", "ClojureScript", "PostgreSQL", "Redux-Toolkit", "Apache Solr", "Google Cloud Platform (GCP)", "Docker", "Kubernetes", "GitLab", "Test Driven Development", "Java", "Google Cloud Dataflow", "Kubernetes"]}
+        { "name": "", "items": ["React", "Clojure", "ClojureScript", "PostgreSQL", "Redux-Toolkit", "Apache Solr", "API REST", "Google Cloud Platform (GCP)", "Docker", "Keycloak", "Kubernetes", "GitLab", "Test Driven Development", "Java", "Google Cloud Dataflow", "Kubernetes"]}
     ]
 ) }}
                 </div>
@@ -153,7 +118,7 @@
             <!-- item Goaland -->
             <div class="sm:text-right print:text-left print:text-gray-500 pt-10 md:pt-0 print:pt-0 break-page-before">Goaland<br> 01/2016 - 08/2019</div>
             <div class="flex flex-col gap-2">
-                <div class="text-md text-primary-200">Développeur Front-end, UI designer</div>
+                <div class="text-md text-primary-200">Développeur Front-end & UI</div>
                 <div class="flex flex-col gap-y-12">
                     <h2 class="-mb-8 text-white print:text-black font-bold">Logiciel SASS de production de prospectus pour la grande distribution</h2>
                     {{ project(
@@ -216,7 +181,7 @@ Création du front - SPA javascript IE10, jQuery</li>
             <!-- item Goaland 2/3 -->
             <div class="sm:text-right print:text-left print:text-gray-500 pt-10 md:pt-0 print:pt-0 break-page-before">Goaland<br> 01/2012 - 08/2016</div>
             <div class="flex flex-col gap-2">
-                <div class="text-md text-primary-200">Développeur front-end, UI designer</div>
+                <div class="text-md text-primary-200">Développeur Front end - UI designer</div>
                 <div class="flex flex-col gap-y-12">
                     {{ project(
     "Arsia - Logiciel SASS - Outil collaboratif de production de document / catalogues InDesign en ligne",
@@ -446,7 +411,7 @@ Création du front - SPA javascript IE10, jQuery</li>
                         <div>
                             Languages :
                         </div>
-                        Javascript, TypeScript, Clojure, PHP, CSS, Java, Bash, Action-Script, Emacs-Lisp
+                        Javascript, TypeScript, Node.js, PHP, Clojure , CSS, Java, Bash, Action-Script, Emacs-Lisp
                     </li>
                     <li>
                         <div>
